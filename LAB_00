@@ -1,0 +1,155 @@
+public class Intro2JavaNForLoop {
+    
+    // Exercise 1: 
+	//	X M
+    //	1 M
+    //	2 2M
+    //	...
+    //	12 12M
+    public static void makeMultTable(int M) {
+        System.out.println("X\t" + M);
+        for (int i = 1; i <= 12; i++) {
+            System.out.println(i + "\t" + (i * M));
+        }
+    }
+    
+    // Exercise 2: M, M-k, M-2k, M-3k, ...
+    public static void deductK(int M, int k) {  
+        int current = M;
+        while (current > 0) {
+            System.out.print(current + " ");
+            current -= k;
+        }
+        System.out.println(); // New line after the sequence
+    }
+    
+    // Exercise 3: upward right triangle made of '*'
+    public static void makeUpwardRightTriangle(int w) {
+        for (int i = 1; i <= w; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("*");
+            }
+            System.out.println(); // New line after each row
+        }
+    }
+    
+    // Exercise 4: downward right triangle made of '*'
+    public static void makeDownwardRightTriangle(int w) { 
+        for (int i = w; i > 0; i--) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("*");
+            }
+            System.out.println(); // New line after each row
+        }
+    }
+    
+    // Exercise 5: isosceles triangle made of '*'
+    public static void makeUpwardIsosceles(int w) {  
+        int maxStars = 2 * w - 1;
+        for (int i = 1; i <= w+1; i++) {
+            int numStars = 2 * i - 1;
+            int numSpaces = (maxStars - numStars) / 2;
+            
+            // Print empty space
+            for (int j = 0; j < numSpaces+1; j++) {
+                System.out.print(" ");
+            }
+            // Print *
+            for (int j = 0; j < numStars; j++) {
+                System.out.print("*");
+            }
+            System.out.println(); //new lin
+        }
+} 
+            System.out.println(); //new line
+        }
+    }
+        static int cal = 1;
+     public static void calculatePower(int base,int exponent){
+        
+        for(int i = 1 ;i<=exponent;i++){
+            cal*=base;
+            
+        }
+        System.out.println(cal);
+    
+     }
+     public static void printHollowSquare(int N) {
+        int row = 1;
+        
+        while (row <= N) {
+            int col = 1;
+            
+            while (col <= N) {
+                if (row == 1 || row == N || col == 1 || col == N) {
+                    // Print * for the border of the square
+                    System.out.print("*");
+                } else {
+                    // Print space for the hollow part
+                    System.out.print(" ");
+                }
+                col++;
+            }
+            System.out.println(); // Move to the next line after each row
+            row++;
+        }
+    }
+
+    public static void main(String[] args) {
+        
+/* Checking Ex1: Remove the below block comment to test your makeMultTable method */
+        
+        // System.out.println("Exercise 1\n");
+        // System.out.println("makeMultTable(63)");
+        // System.out.println("Your answer is ");
+        // makeMultTable(63);
+        // System.out.println("The Correct answer is ");
+        // System.out.println( "X\t63\n1\t63\n2\t126\n3\t189\n4\t252\n5\t315\n6\t378\n7\t441\n8\t504\n9\t567\n10\t630\n11\t693\n12\t756");
+        // System.out.println(); 
+  
+
+      
+ /* Checking Ex2: Remove the below block comment to test your deductByK method  */
+        
+        // System.out.println("Exercise 2  deductK(105,8)");
+        // System.out.println("Your answer is ");
+        // deductK(105,8); 
+        // System.out.println("The Correct answer is ");
+        // System.out.println("105 97 89 81 73 65 57 49 41 33 25 17 9 1");
+        // System.out.println(); 
+   
+  
+/* Checking Ex3: Uncomment the below block comment to test your deductByK method  */
+    //    System.out.println("Exercise 3 makeUpwardRightTriangle(6)");
+    //     System.out.println("Your answer is ");
+        // makeUpwardRightTriangle(6);
+    //     System.out.println("The Correct answer is ");   
+    //     System.out.println("*\n**\n***\n****\n*****\n******\n");
+        
+    
+
+/* Checking Ex4: Remove the below block comment to test your deductByK method  */
+
+    //    System.out.println("Exercise 4 makeDownwardRightTriangle(5)"); 
+    //    System.out.println("Your answer is ");
+    //   makeDownwardRightTriangle(5);
+    //   System.out.println("The Correct answer is ");   
+    // System.out.println("*****\n****\n***\n**\n*\n");
+        
+       
+      /* Checking Ex5: Remove the below block comment to test your deductByK method */ 
+
+        // System.out.println("Exercise 5 makeUpwardIsosceles(4)");
+        // System.out.println("Your answer is ");
+        // makeUpwardIsosceles(4);
+        // System.out.println("The Correct answer is ");   
+        // System.out.println("    *\n   ***\n  *****\n *******\n*********\n");  
+
+       
+    //    exercise 4 and 5
+       
+        // calculatePower(2,3);
+        // printHollowSquare(5);
+    }
+    
+}

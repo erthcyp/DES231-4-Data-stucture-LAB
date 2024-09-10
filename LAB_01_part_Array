@@ -1,5 +1,3 @@
-package LAB01;
-
 public class Array {
     final int size;  //The maximum capacity of A
     int [] A ;

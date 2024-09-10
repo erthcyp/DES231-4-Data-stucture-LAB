@@ -1,3 +1,5 @@
+package LAB01;
+
 public class Array {
     final int size;  //The maximum capacity of A
     int [] A ;
@@ -15,7 +17,7 @@ public class Array {
     		return;
     	}
     	for(int i=load; i>0; i--) {
-    		A[i] = A[i-1];
+    		A[i] = A[i-1]; //shift right
     	}
     	A[0] = e;
     	load++;
@@ -34,11 +36,11 @@ public class Array {
     //Ex4 c
     void addAtIndex(int e, int index)
     {  
-    	if(load>=size || index < 0 || index > load) {
+    	if(load>=size) {
     		return;
     	}
-    	for(int i=load; i>0; i--) {
-    		A[i] = A[i-1];
+    	for(int i = load; i>index; i--) {
+    		A[i] = A[i-1]; //shift right from add index
     	}
     	A[index] = e;
     	load++;
@@ -48,11 +50,11 @@ public class Array {
     int removeFirst()
     {   
     	if(load == 0) {
-    		return 0;
+    		return -1;
     	}
 		int temp = A[0];
 			for(int i = 0; i <load-1; i++) {
-				A[i] = A[i+1];
+				A[i] = A[i+1]; //shift left 
 			}
 		load--;
 		return temp;
@@ -62,9 +64,9 @@ public class Array {
      int removeLast()
     {  
     	 if(load == 0) {
-    		 return 0;
+    		 return -1;
     	 }
-    	 int temp = A[load-1];
+    	 int temp = A[load - 1];
     	 load--;
     	 return temp;
 
@@ -79,7 +81,7 @@ public class Array {
     	 }
     	 int temp = A[index];
     	 	for(int i = index; i<load-1; i++) {
-    	 		A[i] = A[i+1];
+    	 		A[i] = A[i+1]; //shift left from remove index
     	 	}
     	 A[load-1] = 0;
     	 load--;
@@ -93,7 +95,7 @@ public class Array {
     	 if(index < 0 || index >= load) {
     		 return -1;
     	 }
-    	 return A[index];
+    	 return A[index]; // Return the element at the specified index
      }
      
     //Ex4 h
@@ -102,7 +104,7 @@ public class Array {
     	 if(index < 0 || index >= load) {
     		 return;
     	 }
-    	 A[index] = val;
+    	 A[index] = val; // Set the value of the element at the specified index
 
      }
 
@@ -117,23 +119,25 @@ public class Array {
     //Ex5
     // Method to find a pair with sum in the array
     boolean findPairWithSum(int sum) {
-        if (/* Check if there are less than 2 elements */) return false;
-    
+        if (load < 2) {
+        	return false;
+        }
+        
         // Using two pointers approach
-        int left = 0;
-        int right = /* Initialize right pointer to the last index */size;
+        int left = 0;	// Initialize left pointer to the start of the array
+        int right = load-1;  // Initialize right pointer to the end of the array
     
-        while (/* Continue looping until left pointer is less than right */) {
-            int currentSum = /* Calculate sum of elements at left and right */;
-            if (/* Check if currentSum equals sum */currentSum == sum) {
+        while (left < right) { // Continue looping while left pointer is less than right pointer
+            int currentSum =  A[left] + A[right] ; // Calculate the sum of elements at left and right pointers
+            if (currentSum == sum) { // Check if the current sum equals the desired sum
                return true; // Pair found
-            } else if (/* Check if currentSum is less than sum */currentSum < sum) {
+            } else if (currentSum < sum) { // Check if the current sum is less than the desired sum
                left++; // Move left pointer to the right
             } else {
                right--; // Move right pointer to the left
             }
         }
-        return false; // No pair found
+        return false; // No pair found 
     }
 
     public static void main(String [] args)
@@ -141,7 +145,7 @@ public class Array {
         Array A = new Array(10);
      
         //Uncomment this section to test Ex4 a 
-        /*  
+          
         A.addFirst(9);
         A.addFirst(1);
         A.addFirst(4);
@@ -149,10 +153,10 @@ public class Array {
         System.out.println("Your Answer is");
         A.printArray();
         System.out.println("Correct Answer is\n4 1 9 \nArray load is 3");
-       */
+       
 
         //Uncomment this section to test Ex4 b 
-	/*  
+	
         System.out.println("----------------------------------");  
         A.addLast(2);
         A.addLast(5);
@@ -161,10 +165,10 @@ public class Array {
         System.out.println("Your Answer is");
         A.printArray();
         System.out.println("Correct Answer is\n4 1 9 2 5 8 \nArray load is 6");
-        */
+        
 
 	//Uncomment this section to test Ex4 c 
-        /*
+        
         System.out.println("----------------------------------"); 
         A.addAtIndex(6, 2);
         A.addAtIndex(3, 4);
@@ -172,10 +176,10 @@ public class Array {
         System.out.println("Your Answer is");
         A.printArray();
         System.out.println("Correct Answer is\n4 1 6 9 3 2 5 8 \nArray load is 8");
-        */
+        
 
          //Uncomment this section to test Ex4 d
-        /*
+        
         System.out.println("----------------------------------"); 
         A.removeFirst();
         A.removeFirst();
@@ -183,10 +187,10 @@ public class Array {
         System.out.println("Your Answer is");
         A.printArray();
         System.out.println("Correct Answer is\n6 9 3 2 5 8 \nArray load is 6");
-         */
+         
 
          //Uncomment this section to test Ex4 e
-        /*
+        
         System.out.println("----------------------------------"); 
         A.removeLast();
         A.removeLast();
@@ -194,10 +198,10 @@ public class Array {
         System.out.println("Your Answer is");
         A.printArray();
         System.out.println("Correct Answer is\n6 9 3 2 \nArray load is 4");
-         */
+         
 
          //Uncomment this section to test Ex4 f
-        /*
+        
         System.out.println("----------------------------------"); 
         A.removeAtIndex(1);
         A.removeAtIndex(1);
@@ -205,29 +209,29 @@ public class Array {
         System.out.println("Your Answer is");
         A.printArray();
         System.out.println("Correct Answer is\n6 2 \nArray load is 2");
-         */
+         
 
         //Uncomment this section to test Ex4 g
-        /*
+        
         System.out.println("----------------------------------");
         A.setElementAtIndex(7, 1);
         System.out.println("After set value at index 1 to 7 ");
         System.out.println("Your Answer is");
         A.printArray();
         System.out.println("Correct Answer is\n6 7 \nArray load is 2");
-         */
+         
 
 	 //Uncomment this section to test Ex4 h
-        /*
+        
         System.out.println("----------------------------------");
         System.out.println("Your Answer is");
         System.out.println("Value at A[1]= " + A.getElementAtIndex(1));
         System.out.println("Correct Answer is\nValue at A[1]= 7");
-	*/
+	
 	
 //optional
 	// Uncomment this section to test Ex 5
-        /*System.out.println("----------------------------------");
+        System.out.println("----------------------------------");
         A.addLast(7);
         A.addLast(9);
         A.addLast(9);
@@ -243,7 +247,7 @@ public class Array {
         int sum = 20;
         System.out.println("Your Answer for findPairWithSum(" + sum + "): " + A.findPairWithSum(sum));
         System.out.println("Correct Answer for findPairWithSum(" + sum + "): true");
-      */
+      
     }
             
 }

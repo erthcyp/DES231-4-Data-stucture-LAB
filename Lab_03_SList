@@ -37,12 +37,13 @@ public class SList<T> {
 	 * @param element The element to be added to the list.
 	 */
 	void addFirst(T element) {
-		SNode<T> newNode = new SNode<T>(element);
-		newNode.next = first;
-		first = newNode;
-		size++;
-		if (last == null)
-			last = first;
+		SNode<T> newNode = new SNode<T>(element); // Create a new node
+		newNode.next = first; // Point the new node's next to the current first
+		first = newNode; // Update the first reference to the new node
+		if (last == null) // If the list was empty
+			last = first; // Update last to point to the new node
+		size++; // Increase the size of the list
+		
 	}
 
 	/**
@@ -52,12 +53,12 @@ public class SList<T> {
 	 */
 	void addLast(T element) {
 		// Ex.1 a) complete the method
-		if(size == 0)
-			addFirst(element);
+		if(size == 0) // If the list is empty, delegate to addFirst
+			addFirst(element); 
 		else {
-			SNode<T> newNode = new SNode<T>(element);
-			last.next = newNode;
-			last = newNode;
+			SNode<T> newNode = new SNode<T>(element); // Create a new node
+			last.next = newNode; // Link the last node to the new node
+			last = newNode; // Update last to the new node
 			}
 		size++;
 		

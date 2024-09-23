@@ -164,8 +164,6 @@ public class SList<T> {
 		
 	}
 
-
-
 	/**
 	 * Checks whether the singly linked list is empty.
 	 *
@@ -189,15 +187,15 @@ public class SList<T> {
 
 // Implement the reversal of the linked list
 	// Ex. 4 complete the method
-    /*void reverse() {
-        SNode previous = null;
-        SNode current = first;
-        SNode next = null;
-        while (/*condition) { // Complete the condition
+    void reverse() {
+        SNode<T> previous = null;
+        SNode<T> current = first; //start with the first node
+        SNode<T> next = null;
+        while (current != null) { // Complete the condition
             next = current.next;
-            current.next = /* update next pointer ;
-            previous = /* move previous ;
-            current = /* move current ;
+            current.next =  previous ;
+            previous =  current;
+            current =  next;
         }
         first = previous;
     }
@@ -212,8 +210,18 @@ public class SList<T> {
 	 */
 	int search(T item) {
 		// Ex.5 complete the method
-		return 0;
+		SNode current = first; //start with the first node
+		int i = 0;
 
+		while(i <= size && current.element != item) {
+			current = current.next;
+			i++;
+		}
+		if(i <= size-1 && current != null)
+			return i;
+		else {
+			return -1;
+		}
 	}
 
 	/**

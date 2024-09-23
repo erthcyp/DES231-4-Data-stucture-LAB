@@ -60,7 +60,7 @@ public class SList<T> {
 			last.next = newNode; // Link the last node to the new node
 			last = newNode; // Update last to the new node
 			}
-		size++;
+		size++; // Increase the size of the list
 		
 		
 	}
@@ -76,21 +76,22 @@ public class SList<T> {
 	 */
 	void addAtIndex(int index, T element) {
 		// Ex.1 b) complete the method
-		if(index < 0)
+		if(index < 0) // Handle invalid index
 			return;
 		else if(index == 0)
-			addFirst(element);
+			addFirst(element); // Use addFirst for index 0
 		else if(index >= size)
-			addLast(element);
+			addLast(element); // Use addLast for out-of-bounds index
 		else {
-			SNode<T> current = first;
-			for(int i = 0; i< index - 1; i++) {
-				current = current.next;
+			//Traverse
+				SNode<T> current = first;  // Start at the first node 
+				for(int i = 0; i < index - 1; i++) {  // Traverse to the node before the index
+					current = current.next;
 			}
-			SNode<T> newNode = new SNode<T>(element);
-			newNode.next = current.next;
-			current.next = newNode;
-			size++;
+			SNode<T> newNode = new SNode<T>(element); // Create new node
+			newNode.next = current.next; // point new node the the next node
+			current.next = newNode; // point previous node to the new node
+			size++; // Increase the size of the list
 		}
 	}
 
@@ -100,15 +101,15 @@ public class SList<T> {
 	 * @return The removed element, or {@code null} if the list is empty.
 	 */
 	T removeFirst() {
-		if (size == 0)
+		if (size == 0) // Check if the list is empty
 			return null;
 		else {
-			SNode<T> temp = first;
-			first = first.next;
-			size--;
-			if (first == null)
+			SNode<T> temp = first; // Temporarily store the first node
+			first = first.next; // Update first to the next node
+			size--; // Decrease the size
+			if (first == null) // If the list becomes empty, update last to null
 				last = null;
-			return temp.element;
+			return temp.element; // Return the removed element
 		}
 
 	}
@@ -120,20 +121,20 @@ public class SList<T> {
 	 */
 	T removeLast() {
 		// Ex.2 complete the method
-		if (size == 0)
+		if (size == 0) // Check if the list is empty
 			return null;
 		else {
-			SNode<T> current = first;
-			while(current.next != last) {
+			SNode<T> current = first; // Start from the first node
+			while(current.next != last) { // Traverse to the node before the last
 				current = current.next;
 			}
-			SNode<T> temp = last;
-			last = current;
-			current.next = null;
-			size--;
-			if (first == null)
+			SNode<T> temp = last; // Temporarily store the last node
+			last = current; // Update last to the second-to-last node
+			current.next = null; // Remove the point to the last node
+			size--; // Decrease the size
+			if (first == null) // If the list becomes empty, update last to null
 				last = null;
-			return temp.element;
+			return temp.element; // Return the removed element
 		}
 
 	}
@@ -147,20 +148,20 @@ public class SList<T> {
 	 */
 	T removeAtIndex(int index) {
 		// Ex.3 complete the method
-		if (index <= 0)
+		if (index <= 0) 
 			return removeFirst();
 		else if(index >= size)
 			return removeLast();
 		else {
-			SNode<T> current = first;
-			for(int i = 0; i< index - 1; i++) {
+			SNode<T> current = first; // Start from the first node
+			for(int i = 0; i< index - 1; i++) { // Traverse tp the node before the index
 				current = current.next;
 			}
-			SNode<T> temp = current.next;
-			current.next = temp.next;
+			SNode<T> temp = current.next; // Temporarily store the node to be removed
+			current.next = temp.next; // Bypass the removed node
 			temp.next = null;
-			size--;
-			return temp.element;
+			size--; // Decrease the size
+			return temp.element; // Return the removed element
 			}
 		
 	}
@@ -189,16 +190,16 @@ public class SList<T> {
 // Implement the reversal of the linked list
 	// Ex. 4 complete the method
     void reverse() {
-        SNode<T> previous = null;
+        SNode<T> previous = null; // Initialize previous node as null
         SNode<T> current = first; //start with the first node
-        SNode<T> next = null;
-        while (current != null) { // Complete the condition
-            next = current.next;
-            current.next =  previous ;
-            previous =  current;
-            current =  next;
+        SNode<T> next = null; // Initialize next node as null
+        while (current != null) { // Traverse the list
+            next = current.next; // Store the next node	
+            current.next =  previous ; // Reverse the link
+            previous =  current; // Move previous to current
+            current =  next; // Move current to next
         }
-        first = previous;
+        first = previous; // Update first to the last processed node
     }
 	
 	/**
@@ -211,15 +212,15 @@ public class SList<T> {
 	 */
 	int search(T item) {
 		// Ex.5 complete the method
-		SNode<T> current = first; //start with the first node
+		SNode<T> current = first; //start with the first node 
 		int i = 0; //starting first index
-		while(i < size && current.element != item) {
+		while(i < size && current.element != item) { // Traverse the list
 			current = current.next;
 			i++;
 			}
-		if(i <= size-1 && current != null)
+		if(i <= size-1 && current != null) // If the item was found
 			return i;
-		else {
+		else { if not found
 			return -1;
 		}
 	}
@@ -230,11 +231,11 @@ public class SList<T> {
 	 * displaying the contents of the list.
 	 */
 	void printHorizontal() {
-		SNode<T> walker = first;
-		for (int i = 0; i < size; i++) {
-			System.out.print(walker.element);
-			System.out.print(" ");
-			walker = walker.next;
+		SNode<T> walker = first; // Start from the first node
+		for (int i = 0; i < size; i++) {  // Traverse the list
+			System.out.print(walker.element); // Print the current element
+			System.out.print(" ");  // Print a space
+			walker = walker.next; // Move to the next node
 		}
 		System.out.println("\n-----");
 	}

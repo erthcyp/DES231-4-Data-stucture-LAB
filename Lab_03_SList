@@ -210,13 +210,12 @@ public class SList<T> {
 	 */
 	int search(T item) {
 		// Ex.5 complete the method
-		SNode current = first; //start with the first node
-		int i = 0;
-
-		while(i <= size && current.element != item) {
+		SNode<T> current = first; //start with the first node
+		int i = 0; //starting first index
+		while(i < size && current.element != item) {
 			current = current.next;
 			i++;
-		}
+			}
 		if(i <= size-1 && current != null)
 			return i;
 		else {

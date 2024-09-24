@@ -220,7 +220,7 @@ public class SList<T> {
 			}
 		if(i <= size-1 && current != null) // If the item was found
 			return i;
-		else { if not found
+		else { //if not found
 			return -1;
 		}
 	}

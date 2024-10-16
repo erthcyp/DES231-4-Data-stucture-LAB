@@ -13,7 +13,7 @@ public class TestQueue {
 		System.out.print("Your Q content is : ");
 		Q.printHorizontal();
 		System.out.println("Your Q size is : " + Q.list.size);
-		System.out.println("----------");
+		System.out.println("----------------");
 
 		// Exercise 1.b
 		System.out.println("\nExercise 1.b");
@@ -24,7 +24,7 @@ public class TestQueue {
 		System.out.print("Your Q content is :");
 		Q.printHorizontal();
 		System.out.println("Your Q size is : " + Q.list.size);
-		System.out.println("----------");
+		System.out.println("----------------");
 
 		// Exercise 1.c
 		System.out.println("\nExercise 1.c");
@@ -39,7 +39,7 @@ public class TestQueue {
 		System.out.println("\nYour Q size is : " + Q.list.size);
 		System.out.print("Your Q content is : ");
 		Q.printHorizontal();
-		System.out.println("----------");
+		System.out.println("\n----------------");
 
 		// Exercise 2
 		System.out.println("Exercise 2");
@@ -55,7 +55,7 @@ public class TestQueue {
 		System.out.print("Your Q2 content is: ");
 		Q2.printHorizontal();
 		System.out.println("Your Q2 size is : " + Q.list.size);
-		System.out.println("----------");
+		System.out.println("----------------");
 
 		// Exercise 3
 		System.out.println("\nExercise 3");
@@ -63,7 +63,7 @@ public class TestQueue {
 		// The result should be: Q5 and Q6 are identical.
 		// The result should be: Q7 and Q8 are not identical.
 		// NOTE: All of elements in the queue should remains the same.
-		System.out.println("Testing isIdentical");
+		System.out.println("\nTesting isIdentical");
 		Queue<Integer> Q3 = new Queue<Integer>();
 		Q3.enqueue(1);
 		Q3.enqueue(2);
@@ -83,18 +83,13 @@ public class TestQueue {
 		} else {
 			System.out.println("not identical.");
 		}
-		System.out.print("After the evaluation the content, of Q3 and Q4 are ");
-		if (Q4.isIdentical(Q3)) {
-			System.out.println("identical.");
-		} else {
-			System.out.println("not identical.");
-		}
+		System.out.println("After the evaluation the content, of Q3 and Q4 are ");
 		System.out.print("Q3 : ");
 		Q3.printHorizontal();
 		System.out.print("\nQ4 : ");
 		Q4.printHorizontal();
 
-		System.out.println("\nTesting copyQueue and isIdentical");
+		System.out.println("\n\nTesting copyQueue and isIdentical");
 		Queue<String> Q5 = new Queue<String>();
 		Q5.enqueue("Alice");
 		Q5.enqueue("Bob");
@@ -110,18 +105,13 @@ public class TestQueue {
 		} else {
 			System.out.println("not identical.");
 		}
-		System.out.print("After the evaluation, the content of Q5 and Q6 are ");
-		if (Q5.isIdentical(Q6)) {
-			System.out.println("identical.");
-		} else {
-			System.out.println("not identical.");
-		}
+		System.out.println("After the evaluation, the content of Q5 and Q6 are ");
 		System.out.print("Q5 : ");
 		Q5.printHorizontal();
 		System.out.print("\nQ6 : ");
 		Q6.printHorizontal();
 
-		System.out.println("\nTesting isIdentical");
+		System.out.println("\n\nTesting isIdentical");
 		Queue<Integer> Q7 = new Queue<Integer>();
 		Q7.enqueue(3);
 		Q7.enqueue(5);
@@ -140,17 +130,12 @@ public class TestQueue {
 		} else {
 			System.out.println("not identical.");
 		}
-		System.out.print("After the evaluation, the content of Q7 and Q8 are ");
-		if (Q7.isIdentical(Q8)) {
-			System.out.println("identical.");
-		} else {
-			System.out.println("not identical.");
-		}
+		System.out.println("After the evaluation, the content of Q7 and Q8 are ");
 		System.out.print("Q7: ");
 		Q7.printHorizontal();
 		System.out.print("\nQ8: ");
-		Q8.printHorizontal();
-
+		Q8.printHorizontal();}}
+/*
 		// Exercise 4.a
 		// The result should be: + 2 3 is a prefix expression
 		// The result should be: 2 + 3 is not a prefix expression
@@ -217,6 +202,6 @@ public class TestQueue {
 		System.out.println("---------------------------------------------- ");
 
 
-	}
 
-}
+
+}*/

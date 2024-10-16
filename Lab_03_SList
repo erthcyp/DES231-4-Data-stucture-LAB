@@ -59,8 +59,9 @@ public class SList<T> {
 			SNode<T> newNode = new SNode<T>(element); // Create a new node
 			last.next = newNode; // Link the last node to the new node
 			last = newNode; // Update last to the new node
+			size++; // Increase the size of the list
 			}
-		size++; // Increase the size of the list
+		
 		
 		
 	}

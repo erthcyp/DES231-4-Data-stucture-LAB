@@ -134,8 +134,8 @@ public class TestQueue {
 		System.out.print("Q7: ");
 		Q7.printHorizontal();
 		System.out.print("\nQ8: ");
-		Q8.printHorizontal();}}
-/*
+		Q8.printHorizontal();
+        
 		// Exercise 4.a
 		// The result should be: + 2 3 is a prefix expression
 		// The result should be: 2 + 3 is not a prefix expression
@@ -158,11 +158,12 @@ public class TestQueue {
 			System.out.println("Your result is : 2 3 + is a prefix expression");
 		else
 			System.out.println("Your result is : 2 3 + is not a prefix expression");
-
+	
 		// Exercise 4.b
 		// The result should be 5
 		// The result should be 40
 		// The result should be 1
+		
 		System.out.println("\nTesting prefixEval");
 		String[] input1 = { "+", "2", "3" };
 		System.out.println("Your Result is " + QueueApp.prefixEval(input1));
@@ -203,5 +204,5 @@ public class TestQueue {
 
 
 
-
-}*/
+	}
+}

@@ -1,5 +1,3 @@
-import java.util.Queue;
-
 public class QueueApp {
 	/**
 	 * Checks if a given string represents an integer.
@@ -70,8 +68,28 @@ public class QueueApp {
 			Q.enqueue(input[i]);
 		}
 		// Exercise 4
-		// add your code here
-		return null;
+	
+		while(Q.list.getSize() >= 3) {
+			
+			String x = Q.dequeue(); 
+			String y = Q.dequeue(); 
+			String z = Q.dequeue(); 
+			
+			// Check if it forms a prefix expression
+			if(isPrefix(x,y,z)) {
+				String result = evalPrefixString(x, y, z);
+				Q.enqueue(result); // Enqueue the result back to the queue
+			}
+			else {	//enqueue the first to the last
+				Q.list.addFirst(z);
+				Q.list.addFirst(y);
+				Q.enqueue(x);
+			}
+			
+		}
+		
+		// Assuming the final result will be the only element left in the queue
+		return Q.dequeue(); //return the final evaluated result
 	}
 	
 	/**
@@ -89,17 +107,22 @@ public class QueueApp {
         for (String child : children) {
 			// Exercise 5
             //Complete the code, Add children to the queue
-			
+        	queue.enqueue(child);
+        	
         }
 
         while (queue.getSize() > 1) {
             // Pass the potato the specified number of times
-            for (/*Complete the code */) {
-                /* Remove child from front and add to rear (simulate passing)*/;
+            for(int i = 0; i< passes; i++) {
+                /* Remove child from front and add to rear (simulate passing)*/
+            	String child = queue.dequeue(); // Remove child from front
+            	queue.enqueue(child);  // Add child to rear (simulate passing)
             }
-            /* Remove child holding the potato after specified passes */;
+            /* Remove child holding the potato after specified passes */
+            queue.dequeue(); // This child is out of the game
         }
-        /*Return the winner*/;
+        /*Return the winner*/
+        return queue.dequeue();
     }
 
 }

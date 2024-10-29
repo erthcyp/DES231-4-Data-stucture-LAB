@@ -62,35 +62,32 @@ public class QueueApp {
 	 * @param input The array of strings representing the prefix expression.
 	 * @return The result of the evaluated prefix expression.
 	 */
-	static String prefixEval(String[] input) {
-		Queue<String> Q = new Queue<String>();
-		for (int i = 0; i < input.length; i++) {
-			Q.enqueue(input[i]);
-		}
-		// Exercise 4
-	
-		while(Q.list.getSize() >= 3) {
-			
-			String x = Q.dequeue(); 
-			String y = Q.dequeue(); 
-			String z = Q.dequeue(); 
-			
-			// Check if it forms a prefix expression
-			if(isPrefix(x,y,z)) {
-				String result = evalPrefixString(x, y, z);
-				Q.enqueue(result); // Enqueue the result back to the queue
-			}
-			else {	//enqueue the first to the last
-				Q.list.addFirst(z);
-				Q.list.addFirst(y);
-				Q.enqueue(x);
-			}
-			
-		}
-		
-		// Assuming the final result will be the only element left in the queue
-		return Q.dequeue(); //return the final evaluated result
-	}
+	static String prefixEval(String[] input) 
+	 {
+	    Queue<String> Q = new Queue<String>();
+	    for (int i = 0; i < input.length; i++) {
+	    	Q.enqueue(input[i]);
+	    }
+	    // Exercise 4
+	    while(Q.getSize()>= 3){
+	    	String x = Q.dequeue(); 
+	    	String y = Q.dequeue(); 
+	    	String z = Q.dequeue(); 
+	     
+	    	while(!isPrefix(x,y,z)){
+	    		Q.enqueue(x);
+	         	x = y;
+	         	y = z;
+	         	z = Q.dequeue();
+	    	}
+	    	
+	        String result = evalPrefixString(x, y, z);
+	        Q.enqueue(result); // Enqueue the result back to the queue
+	     }
+	    // Assuming the final result will be the only element left in the queue
+	    return Q.dequeue(); //return the final evaluated result
+
+	 }
 	
 	/**
      * Simulates the "Hot Potato" game using a queue.

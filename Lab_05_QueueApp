@@ -88,7 +88,7 @@ public class QueueApp {
 	    return Q.dequeue(); //return the final evaluated result
 
 	 }
-	
+		
 	/**
      * Simulates the "Hot Potato" game using a queue.
      *
